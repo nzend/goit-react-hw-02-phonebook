@@ -1,4 +1,5 @@
 import React from 'react';
+import css from './Form.module.css';
 
 class Form extends React.Component {
   state = {
@@ -24,9 +25,11 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form>
-        <label>
+      <form className={css.form} onSubmit={this.handleSubmit}>
+        <label className={css.formLabel}>
+          Name
           <input
+            className={css.formInput}
             onChange={this.handleChange}
             value={this.state.name}
             type="text"
@@ -35,11 +38,12 @@ class Form extends React.Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-          Name
         </label>
-        <br />
-        <label>
+
+        <label className={css.formLabel}>
+          Number
           <input
+            className={css.formInput}
             onChange={this.handleChange}
             value={this.state.number}
             type="tel"
@@ -48,11 +52,13 @@ class Form extends React.Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-          Number
         </label>
-        <br />
 
-        <button type="submit" onClick={this.handleSubmit}>
+        <button
+          className={css.addBtn}
+          type="submit"
+          
+        >
           Add contact
         </button>
       </form>

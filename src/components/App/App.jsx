@@ -1,9 +1,10 @@
 import React from 'react';
 import shortid from 'shortid';
+import css from "./App.module.css";
 
-import Form from './Form/Form';
-import { ContactsList } from './ContactsList/ContactsList';
-import { Filter } from './Filter/Filter';
+import Form from '../Form/Form';
+import { ContactsList } from '../ContactsList/ContactsList';
+import { Filter } from '../Filter/Filter';
 class App extends React.Component {
   state = {
     contacts: [
@@ -51,9 +52,10 @@ class App extends React.Component {
       contact.name.toLowerCase().includes(normalizeFilter)
     );
     return (
-      <div>
+      <div className={css.container}>
+        <h1 className={css.phonebookTitle}>Phone<span className={css.titlePart}>book</span></h1>
         <Form contacts={contacts} onSubmit={this.addContact}></Form>
-        <h2>Contacts</h2>
+        <h2 className={css.contactsTitle}>Contacts</h2>
         <Filter filter={this.state.filter} onChangefilter={this.changeFilter} />
         <ContactsList
           contacts={visibleContacts}
